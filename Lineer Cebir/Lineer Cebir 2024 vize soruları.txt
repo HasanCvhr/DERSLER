@@ -1,0 +1,17 @@
+1. soru = A.B=C matrisleri için ; x,y,z kaçtır?
+soru içeriği : her matriste bilinmeyenlerden birisi vardı. Mecbur A ve B matrislerini çarpıp C matrisine eşitlememiz gerekmektedir.
+
+
+2. soru = Verien A matrisinin varsa tersini elementer satır işlemleri ile bulunuz.
+soru içeriği : çözüm var mı diye önce determınant kontrolu yapmazsan puan alamazsın.
+
+
+3. soru = Verilen 3 bilinmeyenli 3 denklemli, denklem sistemini çözümü varsa cramer yöntemi kullanrak çözünüz.
+soru içeriği : çözüm var mı diye önce determınant kontrolu yapmazsan puan alamazsın.
+
+4. soru = Verilen 3*3luk A matrisinin a12 a32 a21 elemanlarının minörünü, A11 A13 A23 elemanlarrının kofaktörlerini bulunuz.
+
+
+Her soru eşit puanda olup,ek sayfa isteyebiliyorsunuz. Ynaınızda ek sayfa götürmeyin,kullanmanıza izin verilmemektedir.
+Çözümler açık ve net olmalıdır. İfadelerin sembollerinin neyi gösterdiği net olmalıdır. Matris , determinant gösterimi vs yaparken kullandığınız sembollere cok dikkat edin.
+Mutlaka sağlama yapın.
