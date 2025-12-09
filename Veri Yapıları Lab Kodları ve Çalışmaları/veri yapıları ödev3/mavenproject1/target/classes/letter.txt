@@ -1,0 +1,2 @@
+This is an example letter text for Huffman coding. It contains repeated
+characters to generate frequencies.

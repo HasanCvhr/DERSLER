@@ -1,0 +1,1 @@
+This is the source text that will be encoded using the Huffman codes.
