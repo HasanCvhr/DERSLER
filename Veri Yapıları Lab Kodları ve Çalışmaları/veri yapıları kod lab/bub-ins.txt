@@ -1,0 +1,172 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package com.mycompany.vylab11;
+
+import java.util.Iterator;
+
+/**
+ *
+ * @author gurha
+ */
+public class DoublyLinkedList<T extends Comparable> implements Iterable<T>{
+    private DNode<T> head;
+    
+    public void addToFront(T val){
+        DNode<T> newNode =new DNode(val);
+        newNode.next=head;
+        head=newNode;
+        if(head.next!=null)
+            head.next.prev=newNode;
+    }
+    public void addToEnd(T val){
+        DNode<T> newNode =new DNode(val);
+        if(head==null)
+            head=newNode;
+        else{
+            DNode<T> iterator=head;
+            while(iterator.next!=null)
+                iterator=iterator.next;
+            iterator.next=newNode;
+            newNode.prev=iterator;
+         }
+    }
+    public void delete(T val){
+        while(search(val)){
+            int counter=0;
+            while( head!=null && head.value.compareTo(val)==0 ){
+                this.deleteHead();
+                counter++;
+            }
+            if(counter!=0)
+                continue;
+            DNode<T> iterator=head;
+            while(iterator.value.compareTo(val)!=0)
+                iterator=iterator.next;
+            iterator.prev.next=iterator.next;
+            if(iterator.next!=null) 
+                iterator.next.prev=iterator.prev;
+        }
+    }
+    public int count() {
+        int counter = 0;
+        DNode<T> iterator = head;
+        while (iterator != null) {
+            iterator = iterator.next;
+            counter++;
+        }
+        return counter;
+    }
+    public void insertAtGivenIndex(T val, int index){
+        if(index>count())
+            return;
+        if(index<=0)
+            this.addToFront(val);
+        else{
+            DNode<T> iterator=head;
+            for (int i = 0; i < index-1; i++) {
+                iterator=iterator.next;
+            }
+            DNode<T> newNode=new DNode(val);
+            newNode.next=iterator.next;
+            if(iterator.next!=null) 
+                iterator.next.prev=newNode;
+            iterator.next=newNode;
+            newNode.prev=iterator;
+            
+//            iterator.prev.next=newNode;
+//            newNode.prev=iterator.prev;
+//            newNode.next=iterator;
+//            iterator.prev=newNode;
+            
+            
+        }
+    }
+    
+    public boolean search(T val){
+        DNode<T> iterator = head;
+        while (iterator != null) {
+            if (iterator.value.compareTo(val) == 0) {
+                return true;
+            }
+            iterator = iterator.next;
+        }
+        return false;
+    }
+    
+    public void deleteHead(){
+        if(head==null)
+            return;
+        head=head.next;
+        if(head!=null)
+            head.prev=null;
+    }
+     public void display() {
+        if (head == null) {
+            return;
+        }
+        DNode<T> iterator = head;
+        while (iterator.next != null) {
+            System.out.print(iterator + "<-->");
+            iterator = iterator.next;
+        }
+        System.out.println(iterator);
+
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        Iterator<T> iterator=new Iterator(){
+            DNode<T> currentNode=head;
+            public boolean hasNext(){
+                return currentNode!=null;
+            }
+            public T next(){
+                T val =currentNode.value;
+                currentNode=currentNode.next;
+                return val;
+            }
+        };
+        return iterator;
+    }
+    public void bubbleSort(){
+       for (int i = 0; i < count()-1; i++) {
+            DNode<T> iterator=head;
+            for (int j = 0; j < count()-1-i; j++) {
+                if(iterator.value.compareTo(iterator.next.value)==1){
+                    T temp=iterator.value;
+                    iterator.value=iterator.next.value;
+                    iterator.next.value=temp;
+                }
+                iterator=iterator.next;
+            }
+       }
+        
+        
+    }
+    public void insertionSort(){
+        if(head==null && head.next==null)
+            return;
+        DNode<T> iterator=head.next;
+        for (int i = 1; i < count(); i++) {
+            DNode<T> iteratorToInsert=iterator;
+            while(iteratorToInsert.prev!=null && 
+                    iteratorToInsert.value.compareTo(iteratorToInsert.prev.value)==-1){
+                T temp=iteratorToInsert.value;
+                iteratorToInsert.value=iteratorToInsert.prev.value;
+                iteratorToInsert.prev.value=temp;
+        
+                iteratorToInsert=iteratorToInsert.prev;
+            }
+            iterator=iterator.next;
+        }
+            
+            
+        
+        
+    }
+    
+    
+}
+
